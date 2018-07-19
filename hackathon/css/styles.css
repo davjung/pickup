@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+* {
+  font-family: 'Raleway Dots';
+}
+
+
+.homescreen-title {
+  position: relative;
+  top: 30%;
+  display: block;
+  text-align: center;
+  font-size: 100px;
+}
+
+.homecontainer {
+  font-size: 63px;
+  display: inline-block;
+  margin: 0 auto;
+  width: 1250px;
+  text-align: center;
+  position: relative;
+  top: 170px;
+  left: 7px;
+}
+
+.homecontainer div a {
+  text-decoration: none;
+}
+
+.homecontainer div {
+  display: inline;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.homescreen-login a{
+  color: red;
+}
+
+.homescreen-signup a{
+  color: blue;
+}
+
+.imgcontainer {
+  text-align: center;
+  position: relative;
+  top: 170px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+.idpwcontainer {
+  display: block;
+  text-align: center;
+  position: relative;
+  top: 200px;
+}
+
+.idpwcontainer div {
+  display: block;
+  text-align: center;
+}
+
+.idpwcontainer div input {
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  font-family: 'Calibri';
+  margin: 2px;
+}
+
+.login {
+  font-size: 16px;
+  margin: 20px;
+  font-family: 'Calibri';
+
+}
+
+.signup-container{
+  display: block;
+  text-align: center;
+  position: relative;
+  top: 300px;
+}
+
+.signup-container div {
+  display: block;
+  text-align: center;
+}
+
+.signup-container div input {
+  display: block;
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  font-family: 'Calibri';
+  margin: 2px;
+}
+
+.namefield {
+  display: block;
+  text-align: center;
+}
+
+.gamescreen-title {
+  position: relative;
+  top: 8%;
+  display: block;
+  text-align: center;
+  font-size: 64px;
+}
+
+.viewchange {
+  text-align: center;
+  font-size: 32px;
+  position: relative;
+  top: 5%;
+}
+
+.gamelink {
+  text-align: center;
+  font-size: 24px;
+  position: relative;
+  top: 12px;
+  left: 43%;
+  color: red;
+  text-decoration: none;
+}
+
+.lineholder {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.lineholder div {
+  display: inline;
+}
