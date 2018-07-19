@@ -9,7 +9,8 @@
 </template>
 
 <script>
-    import firebase from 'firebase'
+    import firebase from 'firebase/app'
+    import 'firebase/auth'
 
     export default {
         name: 'login',
@@ -23,7 +24,7 @@
             signIn: function() {
                 firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                 .then(user => {
-                    alert('Well done! You are now connected')
+                    this.$router.replace('home')
                 })
                 .catch(err => {
                     alert('Oops. ' + err.message)
