@@ -8,26 +8,31 @@ import 'firebase/auth'
 import Vuetify from 'vuetify'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
-// import 'vuetify/dist/vuetify.min.css' 
-
+import VueFire from 'vuefire'
+import 'vuetify/dist/vuetify.min.css' 
 
 Vue.use(Vuetify)
 Vue.use(VueAxios, axios)
 Vue.use(firebase)
+Vue.use(VueFire)
 
 Vue.config.productionTip = false
 
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyDOcAVqfjyLG64CEQLrHsfAwYiINrj6sVc",
-  authDomain: "pickup-ffc49.firebaseapp.com",
-  databaseURL: "https://pickup-ffc49.firebaseio.com",
-  projectId: "pickup-ffc49",
-  storageBucket: "",
-  messagingSenderId: "66485522931"
-};
+// let config = {
+//   apiKey: "AIzaSyDOcAVqfjyLG64CEQLrHsfAwYiINrj6sVc",
+//   authDomain: "pickup-ffc49.firebaseapp.com",
+//   databaseURL: "https://pickup-ffc49.firebaseio.com",
+//   projectId: "pickup-ffc49",
+//   storageBucket: "",
+//   messagingSenderId: "66485522931"
+// };
 
-firebase.initializeApp(config);
+// let app = Firebase.initializeApp(config)
+// export const db = app.database()
+
+// firebase.initializeApp(config);
+
 firebase.auth().onAuthStateChanged(function (user) {
   /* eslint-disable no-new */
   new Vue({

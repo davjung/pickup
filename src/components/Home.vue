@@ -1,10 +1,11 @@
 <template>
   <div class="home">
-    <button>Create a match</button>
-    <button v-on:click="logout">Logout</button>
+    <button id="createMatchBtn" class="topbtn" v-on:click="createMatch">Create a match</button>
+    <br>
+    <button id="logOutBtn" class="topbtn" v-on:click="logout">Logout</button><br><br> 
     <div id="current-matches">
-      <h2>Upcoming Matches</h2>
-      
+      <h1>Upcoming Matches</h1>
+      <br>
       <game
         v-for="Game in Games"
         v-bind:key = "Game.id"
@@ -26,6 +27,9 @@ const log = function (l) {
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import game from './Game'
+import * as sample from '../assets/sampleGames.json'
+
+
 
 export default {
   name: 'Home',
@@ -52,37 +56,13 @@ export default {
     },
 
     testData: function() {
-      let games = []
-      
-      for (let i = 0; i<1; i++) {
-        let game = {}
+      this.Games = sample;
+    },
 
-        this.axios.get("https://randomuser.me/api/?results=14&inc=name,gender,phone,email,picture&noinfo")
-        .then(response => {
-          let teamA = response.data.results.slice(0,7);
-          let teamB = response.data.results.slice(7,14);
-          teamA.forEach(member => {
-            member.team = 'A';
-          });
-          teamB.forEach(member => {
-            member.team = 'B';
-          })
-
-          game.teamA = teamA;
-          game.teamB = teamB;
-          game.players = game.teamA.concat(game.teamB);
-          game.slots = 22 - game.players.length;
-          game.field = "Long Field";
-          game.id = i;
-
-          game.creator = game.teamA[0];
-        })
-        games.push(game);
-      }
-      this.Games = games;
-
-    }
-  }
+    createMatch: function() {
+      this.$router.push('Add')
+    },
+  } 
 }
 </script>
 
@@ -101,5 +81,13 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.topbtn{
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 3px;
+  margin: 3px;
+  width: 150px;
 }
 </style>
