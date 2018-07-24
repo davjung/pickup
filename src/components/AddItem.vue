@@ -4,18 +4,18 @@
             <h1>Create Match</h1>
         </div>
         <div class="card-body">
-            <form v-on:submit.prevent="addItem">
+            <form v-on:submit.prevent="addMatch">
                 <div class="form-group">
                     <label>Game Name:</label>
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" v-model="newMatch.name"/>
                 </div>
                 <div class="form-group">
                     <label>Field Location:</label>
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" v-model="newMatch.field"/>
                 </div>
                 <div class="form-group">
                     <label>Game Date/Time:</label>
-                    <input type="datetime" class="form-control"/>
+                    <input type="datetime-local" class="form-control" v-model="newMatch.datetime"/>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Add Item"/>
@@ -30,7 +30,7 @@ import { db } from '../config/db'
 
 export default {
     components: {
-        name: 'AddItem'
+        name: 'addMatch'
     },
 
     firebase: {
@@ -39,23 +39,25 @@ export default {
 
     data () {
         return {
-            name: '',
-            field: '',
-            creator: '',
-            datetime: '',
+            newMatch: {
+                name: '',
+                field: '',
+                creator: '',
+                datetime: '',
+            }
         }
     },
 
     methods: {
-        addItem() {
-            this.$firebaseRefs.items.push({
-                name: this.newItem.name,
-                price: this.newItem.field
+        addMatch() {
+            this.$firebaseRefs.matches.push({
+                name: this.newMatch.name,
+                price: this.newMatch.field
             })
 
-            this.newItem.name = '';
-            this.newItem.field = '';
-            this.$router.push('/index')
+            this.newMatch.name = '';
+            this.newMatch.field = '';
+            // this.$router.push('/index')
         }
     }
 }

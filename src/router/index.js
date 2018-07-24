@@ -51,7 +51,11 @@ let router = new Router({
     {
       name: 'Add',
       path: '/add',
-      component: AddItem
+      component: AddItem,
+      meta: {
+        requiresAuth: true
+      }
+
     },
 
     {
@@ -70,14 +74,14 @@ let router = new Router({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   let currentUser = firebase.auth().currentUser;
-//   let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+router.beforeEach((to, from, next) => {
+  let currentUser = firebase.auth().currentUser;
+  let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-//   if (requiresAuth && !currentUser) next('login')
-//   else if (!requiresAuth && currentUser) next('home')
-//   else next() // doesn't req auth and is current user
-// })
+  if (requiresAuth && !currentUser) next('login')
+  else if (!requiresAuth && currentUser) next('home')
+  else next() // doesn't req auth and is current user
+})
 
 router.beforeResolve((to, from, next) => {
   if (to.name) {
