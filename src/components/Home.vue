@@ -7,9 +7,9 @@
       <h1>Upcoming Matches</h1>
       <br>
       <game
-        v-for="Game in Games"
-        v-bind:key = "Game.id"
-        v-bind:gameData = "Game"
+        v-for="match in matches"
+        v-bind:key = "match.id"
+        v-bind:matchData = "match"
       ></game>
 
 
@@ -28,6 +28,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import game from './Game'
 import * as sample from '../assets/sampleGames.json'
+import { db } from '../config/db'
 
 
 
@@ -35,10 +36,16 @@ export default {
   name: 'Home',
   data () {
     return {
-      Games: Object,
+      matches: []
     }
   },
   
+  firebase: {
+    matches: db.ref('matches')
+  },
+
+
+
   components: {
     game
   },

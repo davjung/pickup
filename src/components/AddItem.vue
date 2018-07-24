@@ -6,9 +6,15 @@
         <div class="card-body">
             <form v-on:submit.prevent="addMatch">
                 <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" class="form-control" v-model="newMatch.creator"/>
+                </div>
+
+                <div class="form-group">
                     <label>Game Name:</label>
                     <input type="text" class="form-control" v-model="newMatch.name"/>
                 </div>
+
                 <div class="form-group">
                     <label>Field Location:</label>
                     <input type="text" class="form-control" v-model="newMatch.field"/>
@@ -27,6 +33,11 @@
 
 <script>
 import { db } from '../config/db'
+import firebase from 'firebase'
+
+const log = function (l) {
+   console.log(l);
+}
 
 export default {
     components: {
@@ -34,7 +45,7 @@ export default {
     },
 
     firebase: {
-        matches: db.ref('matches')
+        matches: db.ref('matches') //firebase.initializeApp(config).database().ref('matches')
     },
 
     data () {
@@ -50,14 +61,26 @@ export default {
 
     methods: {
         addMatch() {
-            this.$firebaseRefs.matches.push({
-                name: this.newMatch.name,
-                price: this.newMatch.field
-            })
+            let user = firebase.auth().currentUser;
+            let match = this.$firebaseRefs.matches.child(this.newMatch.name);
+
+            match.set({
+                field: this.newMatch.field,
+                creator: this.newMatch.creator,
+                creatorEmail: user.email,
+                datetime: this.newMatch.datetime,
+                teamA: {},
+                teamB: {},
+            });
+
+            match.child('players').push(this.newMatch.creator);
 
             this.newMatch.name = '';
             this.newMatch.field = '';
-            // this.$router.push('/index')
+            this.newMatch.datetime = '';
+            this.newMatch.creator = '';
+
+            this.$router.push('/home')
         }
     }
 }
@@ -66,5 +89,12 @@ export default {
 <style scoped>
     input {
         border: 1px black;
+    }
+
+    .form-group {
+        width: 400px;
+        margin: auto;
+        margin-top: 30px;
+
     }
 </style>

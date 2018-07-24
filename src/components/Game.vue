@@ -10,14 +10,12 @@
 
         <v-card-title primary-title>
           <div style="margin:auto">
-            <h3 class="headline mb-0">Game {{ game.id + 1 }}</h3>
+            <h3 class="headline mb-0">{{ game['.key'] }}</h3>
             <div id=matchDetails style="text-align:left">
-                <p>Creator: {{ game.creator.name.first }} {{ game.creator.name.last }}<br></p>
+                <p>Creator: {{ game.creator }}<br></p>
                 <p>Location: {{ game.field }}<br></p>
                 <p>Slots: {{ game.slots }}</p>
-                <p>Date: {{ game.date }}</p>
-                <p>Time: {{ game.time }}</p>
-
+                <p>Date/Time: {{ game.datetime }}</p>
 
             </div>
           </div>
@@ -40,7 +38,7 @@
 export default {
   name: 'game',
   props: {
-    gameData: {
+    matchData: {
       type: Object,
       required: true
     },
@@ -48,7 +46,7 @@ export default {
 
   computed: {
     game() {
-      let game = this.gameData;
+      let game = this.matchData;
       return game;
     },
   },
