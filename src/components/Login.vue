@@ -1,10 +1,18 @@
 <template>
     <div class="login">
-        <h3>Sign In</h3>
-        <input type="text" v-model="email" placeholder="Email"><br>
-        <input type="password" v-model="password" placeholder="Pw"><br>
-        <button v-on:click="signIn">Login</button>
-        <p>You don't have an account? You can <router-link to="/sign-up">create one</router-link></p>
+        <div class="leftSide">
+            <div class="holder">
+                <h4>Login</h4>
+                <input class="authInput" type="text" v-model="email" placeholder="Email"><br>
+                <input class="authInput" type="password" v-model="password" placeholder="Pw"><br>
+                <button v-on:click="signIn">login</button>
+                <p>Don't have an account? You can <router-link to="/sign-up">create one!</router-link></p>
+            </div>
+        </div>
+        <div class="rightSide">
+            <img src="../assets/login_image.jpg"/>
+        </div>
+            
     </div>
 </template>
 
@@ -36,13 +44,56 @@
 
 <style scoped>
     .login {
-        margin-top: 20px;
+        height: 80vh;
+        border-bottom: 1px black solid;
     }
+
+    .leftSide {
+        width: 35%;
+        float: left;
+        height: 100%
+    }
+
+    .rightSide {
+        background: blue;
+        margin-left: 35%;
+        width: 65%;
+        float: left;
+        height: 100%;
+    }
+
+    .holder {
+        width: 70%;
+        position: relative;
+        top: 50%;
+        transform: perspective(1px) translateY(-85%);
+        border-left: 1px solid black;
+    }
+
+    .holder h4 {
+        text-align: left;
+        padding-left: 5%
+    }
+
+    .holder button {
+        border-radius: 3px;
+        border: 1px solid indigo;
+        padding: 7px;
+        padding-right: 38px;
+        background: rgb(130, 158, 89);
+        color: white;
+    }
+
+    img {
+        height: 100%;
+    }
+
     input {
         margin: 10px 0;
-        width: 20%;
+        width: 90%;
         padding: 10px;
         border-radius: 5px;
+        border: 1px black solid;
     }
     button {
         margin-top: 20px;

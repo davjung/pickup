@@ -35,6 +35,7 @@
 import { db } from '../config/db'
 import firebase from 'firebase'
 
+
 const log = function (l) {
    console.log(l);
 }
